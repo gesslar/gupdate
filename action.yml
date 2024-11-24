@@ -1,0 +1,16 @@
+name: "Determine Version"
+description: "A GitHub Action to determine the updated version of a project."
+inputs:
+  source:
+    description: "Specify the source of the current version (package.json or full path)."
+    required: true
+  version_pattern:
+    description: "Regex pattern to match version tags (default: v\\d+\\.\\d+\\.\\d+)."
+    required: false
+    default: "v\\d+\\.\\d+\\.\\d+"
+outputs:
+  updated_version:
+    description: "The updated version string or 'no changes'."
+runs:
+  using: "node20"
+  main: "index.js"
