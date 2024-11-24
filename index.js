@@ -4,7 +4,7 @@ const { execSync } = require('child_process');
 
 try {
   // Get inputs
-  const source = core.getInput('source');
+  const source = core.getInput('source') || './package.json';
   const versionPattern = new RegExp(core.getInput('version_pattern') || 'v\\d+\\.\\d+\\.\\d+');
 
   let currentVersion;
