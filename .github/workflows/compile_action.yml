@@ -41,7 +41,7 @@ jobs:
         id: changes_check
         run: |
           git status
-          lines_changed=$(git diff --patch --unified=0 action/index.js | wc --lines)
+          lines_changed=$(git status -s | wc --lines)
           echo "has_changes=$lines_changed" >> $GITHUB_OUTPUT
           echo "Lines changed: $lines_changed"
 
@@ -50,6 +50,6 @@ jobs:
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          git add action &&
+          git add .
           git commit -m "Auto-build GitHub Action" &&
           git push origin main
