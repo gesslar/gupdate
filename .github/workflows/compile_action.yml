@@ -42,6 +42,7 @@ jobs:
         run: |
           pwd
           ls -la
+          git branch
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add action &&
