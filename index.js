@@ -37,7 +37,7 @@ try {
       // If comparison fails, fallback to the current latest
       return latest;
     }
-  }, null);
+  }, "0.0.0");
 
   core.info(`Latest tag: ${JSON.stringify(latestTag)}`);
   const latestVersion = latestTag ? latestTag : null;
