@@ -27795,7 +27795,7 @@ try {
     const latestVer = latest || null;
 
     try {
-      return compareVersions.compare(currentVer, latestVer) > 0 ? current : latest;
+      return compareVersions.compare(currentVer, latestVer, ">") ? current : latest;
     } catch (e) {
       // If comparison fails, fallback to the current latest
       return latest;
