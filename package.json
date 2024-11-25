@@ -1,10 +1,10 @@
 {
   "name": "gupdate",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Automatic version difference detection action for GitHub ",
   "main": "index.js",
   "scripts": {
-    "build": "ncc build index.js -o dist"
+    "build": "ncc build index.js -o action"
   },
   "keywords": [],
   "author": "gesslar",
