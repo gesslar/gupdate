@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@master
+        with:
+          ref: main
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -47,4 +49,4 @@ jobs:
           git config --global user.name "GitHub Action"
           git add action &&
           git commit -m "Auto-build GitHub Action" &&
-          git push --force
+          git push origin main
