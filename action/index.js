@@ -27788,6 +27788,8 @@ try {
     .split('\n')
     .filter(Boolean);
 
+  core.info(`Tags: ${JSON.stringify(tags)}`);
+
   // Use compare-versions to find the latest tag
   const latestTag = tags.reduce((latest, current) => {
     const currentVer = current.replace(/^v/, '');
