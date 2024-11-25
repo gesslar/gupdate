@@ -4,6 +4,7 @@ inputs:
   source:
     description: "Specify the source of the current version (package.json or full path)."
     required: false
+    default: "package.json"
   version_pattern:
     description: "Regex pattern to match version tags (default: v\\d+\\.\\d+\\.\\d+)."
     required: false
