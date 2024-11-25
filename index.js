@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const fs = require('fs');
 const { execSync } = require('child_process');
+const compareVersions = require('compare-versions');
 
 try {
   // Get inputs
@@ -22,17 +23,33 @@ try {
   const tags = execSync(`git tag -l | grep -E "${versionPattern.source}" || true`)
     .toString()
     .split('\n')
-    .filter(Boolean)
-    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
-    .pop();
+    .filter(Boolean);
 
-  const latestTag = tags ? tags.replace(/^v/, '') : null;
+  // Use compare-versions to find the latest tag
+  const latestTag = tags.reduce((latest, current) => {
+    const currentVer = current.replace(/^v/, '');
+    const latestVer = latest ? latest.replace(/^v/, '') : '0.0.0';
+
+    try {
+      return compareVersions.compare(currentVer, latestVer) > 0 ? current : latest;
+    } catch (e) {
+      // If comparison fails, fallback to the current latest
+      return latest;
+    }
+  }, null);
+
+  const latestVersion = latestTag ? latestTag.replace(/^v/, '') : null;
 
   // Compare versions and set output
-  if (currentVersion === latestTag) {
-    core.setOutput('updated_version', 'no changes');
+  if (!latestVersion) {
+    core.setOutput('updated_version', currentVersion); // First version
   } else {
-    core.setOutput('updated_version', currentVersion);
+    try {
+      const hasUpdate = compareVersions.compare(currentVersion, latestVersion) > 0;
+      core.setOutput('updated_version', hasUpdate ? currentVersion : 'no changes');
+    } catch (e) {
+      core.setFailed(`Version comparison failed: ${e.message}`);
+    }
   }
 } catch (error) {
   core.setFailed(`Action failed with error: ${error.message}`);
