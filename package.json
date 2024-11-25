@@ -1,5 +1,5 @@
 {
-  "name": "gupdate",
+  "name": "new-version-questionmark",
   "version": "1.0.6",
   "description": "Automatic version difference detection action for GitHub ",
   "main": "index.js",
