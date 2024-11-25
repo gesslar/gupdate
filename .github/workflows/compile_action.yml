@@ -43,7 +43,6 @@ jobs:
       - name: Publish GitHub Action
         if: steps.changes_check.outputs.has_changes != '0'
         run: |
-          git checkout origin/main
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add action &&
