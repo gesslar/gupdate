@@ -27803,7 +27803,7 @@ try {
 
   const latestVersion = latestTag ? latestTag.replace(/^v/, '') : null;
 
-  core.log(`Current version: ${currentVersion}, Latest version: ${latestVersion}`);
+  core.info(`Current version: ${currentVersion}, Latest version: ${latestVersion}`);
 
   // Compare versions and set output
   if (!latestVersion) {
