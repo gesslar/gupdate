@@ -19,8 +19,7 @@ try {
   }
 
   // Fetch Git tags and find the latest version
-  execSync('git fetch --tags');
-  const tags = execSync(`git tag -l`)
+  const tags = execSync(`git fetch --tags && git tag`)
     .toString()
     .split('\n')
     .filter(Boolean);
