@@ -27808,6 +27808,7 @@ try {
     core.setOutput('updated_version', currentVersion); // First version
   } else {
     try {
+      console.debug(`Current version: ${currentVersion}, Latest version: ${latestVersion}`);
       const hasUpdate = compareVersions.compare(currentVersion, latestVersion) > 0;
       core.setOutput('updated_version', hasUpdate ? currentVersion : 'no changes');
     } catch (e) {
