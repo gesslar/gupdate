@@ -27579,12 +27579,6 @@ try {
   core.setFailed(`Action failed with error: ${error.message}`);
 }
 
-/*
-1
-2
-3
-*/
-
 module.exports = __webpack_exports__;
 /******/ })()
 ;
