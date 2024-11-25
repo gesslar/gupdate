@@ -1,6 +1,6 @@
 {
   "name": "gupdate",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Automatic version difference detection action for GitHub ",
   "main": "index.js",
   "scripts": {
