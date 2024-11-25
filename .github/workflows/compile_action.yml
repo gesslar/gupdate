@@ -9,6 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@master
@@ -40,9 +43,7 @@ jobs:
       - name: Publish GitHub Action
         if: steps.changes_check.outputs.has_changes != '0'
         run: |
-          pwd
-          ls -la
-          git branch
+          git checkout main
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add action &&
