@@ -49,7 +49,7 @@ try {
     core.setOutput('updated_version', currentVersion); // First version
   } else {
     try {
-      const hasUpdate = compareVersions.compare(currentVersion, latestVersion) > 0;
+      const hasUpdate = compareVersions.compare(currentVersion, latestVersion, ">")
       core.setOutput('updated_version', hasUpdate ? currentVersion : 'no changes');
     } catch (e) {
       core.setFailed(`Version comparison failed: ${e.message}`);
