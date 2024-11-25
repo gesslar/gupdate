@@ -38,6 +38,7 @@ try {
     }
   }, null);
 
+  core.info(`Latest tag: ${JSON.stringify(latestTag)}`);
   const latestVersion = latestTag ? latestTag.replace(/^v/, '') : null;
 
   core.info(`Current version: ${currentVersion}, Latest version: ${latestVersion}`);
