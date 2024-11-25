@@ -20,7 +20,7 @@ try {
 
   // Fetch Git tags and find the latest version
   execSync('git fetch --tags');
-  const tags = execSync(`git tag -l | grep -E "${versionPattern.source}" || true`)
+  const tags = execSync(`git tag -l`)
     .toString()
     .split('\n')
     .filter(Boolean);
