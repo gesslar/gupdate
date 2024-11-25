@@ -29,6 +29,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Check status
+        run: git status
       - name: Remove old index.js
         run: rm -fv action/index.js
 
@@ -38,6 +40,7 @@ jobs:
       - name: Check for changes in
         id: changes_check
         run: |
+          git status
           lines_changed=$(git diff --patch --unified=0 action/index.js | wc --lines)
           echo "has_changes=$lines_changed" >> $GITHUB_OUTPUT
           echo "Lines changed: $lines_changed"
