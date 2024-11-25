@@ -29,8 +29,8 @@ try {
 
   // Use compare-versions to find the latest tag
   const latestTag = tags.reduce((latest, current) => {
-    const currentVer = current.replace(/^v/, '');
-    const latestVer = latest ? latest.replace(/^v/, '') : '0.0.0';
+    const currentVer = current;
+    const latestVer = latest || null;
 
     try {
       return compareVersions.compare(currentVer, latestVer) > 0 ? current : latest;
@@ -41,7 +41,7 @@ try {
   }, null);
 
   core.info(`Latest tag: ${JSON.stringify(latestTag)}`);
-  const latestVersion = latestTag ? latestTag.replace(/^v/, '') : null;
+  const latestVersion = latestTag ? latestTag : null;
 
   core.info(`Current version: ${currentVersion}, Latest version: ${latestVersion}`);
 
